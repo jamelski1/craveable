@@ -1,0 +1,339 @@
+╭─ Craveable v1.0.0 - query ─────────────────────────────────────────────────────────────────────────────────╮
+│ Find a Turkish restaurant in Downtown Baltimore, MD for two people to have dinner under $65 on Thursday    │
+│ night at 7:30 pm with a table for two near a window with a view of the garden or the street.               │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+──────────────────────────────────────────── Agent reasoning log ─────────────────────────────────────────────
+[     0.1 ms] PLAN     ▶ goal
+                  fluents:
+                    - explanations_ready
+                    - results_presented
+                    - results_ranked
+[     1.2 ms] PLAN     ▶ plan found: ParseQuery -> RetrieveCandidates -> PropagateConstraints -> 
+SearchSolutions -> RankSolutions -> ExplainResults -> PresentResults
+                  length: 7
+                  states_expanded: 7
+[     2.0 ms] PLAN     ▶ execute ParseQuery
+                  pre:
+                    - query_received
+                  effects:
+                    - preferences_known
+[     2.9 ms] NLP      • parsing with the rule-based parser
+                  query: Find a Turkish restaurant in Downtown Baltimore, MD for two people to have dinner 
+under $65 on Thursday night at 7:30 pm with a table for two near a window with a view of the garden or the 
+street.
+[     5.2 ms] NLP      • slot cuisine = 'Turkish'
+                  evidence: turkish
+                  method: rule
+[     6.3 ms] NLP      • slot location = 'Downtown / Baltimore / MD'
+                  evidence: in Downtown Baltimore, MD
+                  method: rule
+[     7.3 ms] NLP      • slot party_size = 2
+                  evidence: for two people
+                  method: rule
+[     8.3 ms] NLP      • slot budget_total = 65.0
+                  evidence: under $65
+                  method: rule
+[     9.1 ms] NLP      • slot day = 'Thu'
+                  evidence: thursday
+                  method: rule
+[     9.8 ms] NLP      • slot meal = 'dinner'
+                  evidence: dinner
+                  method: rule
+[    10.7 ms] NLP      • slot time = '19:30'
+                  evidence: 7:30 pm
+                  method: rule
+[    11.5 ms] NLP      • slot window_seat = True
+                  evidence: near a window
+                  method: rule
+[    12.8 ms] NLP      • slot views = ['garden', 'street']
+                  evidence: view of the garden or the street
+                  method: rule
+[    13.8 ms] NLP      ◆ goal specification extracted
+                  cuisine: Turkish
+                  location: Downtown, Baltimore, MD
+                  party_size: 2
+                  budget_total: $65
+                  day: Thu
+                  time: 7:30 PM
+                  meal: dinner
+                  window_seat: yes
+                  views: garden or street
+[    15.6 ms] PLAN     ▶ execute RetrieveCandidates
+                  pre:
+                    - preferences_known
+                  effects:
+                    - candidates_retrieved
+[    30.5 ms] RETRIEVE • loaded 26 restaurants / 53 tables from D:\craveable\craveable-private\craveable\data
+                  source: csv
+[    31.2 ms] PLAN     ▶ execute PropagateConstraints
+                  pre:
+                    - candidates_retrieved
+                  effects:
+                    - constraints_propagated
+[    32.2 ms] CSP      • variables R (restaurant), T (table), S (slot)
+                  domains: R=26, T=53, S=1
+                  constraints:
+                    - cuisine('R',)
+                    - location('R',)
+                    - budget('R',)
+                    - capacity('T',)
+                    - window('T',)
+                    - view('T',)
+                    - belongs('R', 'T')
+                    - open('R', 'S')
+                    - available('T', 'S')
+                  relaxations:
+                    - none (strict query)
+[    34.8 ms] CSP      ◆ unary constraint 'cuisine' on R: kept 10, pruned 16
+                  pruned:
+                    - Zorba's Harbor - cuisine is Greek, not Turkish
+                    - Beirut Nights - cuisine is Lebanese, not Turkish
+                    - Charm City Chophouse - cuisine is Steakhouse, not Turkish
+                    - Lexington Market Crab House - cuisine is Seafood, not Turkish
+                    - Little Italy Trattoria - cuisine is Italian, not Turkish
+                    - Hampden Burger Co. - cuisine is American, not Turkish
+                    - Canton Taco Bar - cuisine is Mexican, not Turkish
+                    - Federal Hill Ramen - cuisine is Japanese, not Turkish
+                    - Harbor East Sushi - cuisine is Japanese, not Turkish
+                    - Mount Vernon Thai - cuisine is Thai, not Turkish
+                    - Downtown Diner - cuisine is American, not Turkish
+                    - Pratt Street Pizza - cuisine is Italian, not Turkish
+                  domain_size: 10
+[    37.7 ms] CSP      ◆ unary constraint 'location' on R: kept 7, pruned 3
+                  pruned:
+                    - Istanbul Ocakbasi - Mount Vernon is 0.69 mi from the Downtown centre (> 0.6 mi)
+                    - Cappadocia Lounge - Fells Point is 1.15 mi from the Downtown centre (> 0.6 mi)
+                    - Turkish Kitchen Towson - Towson is 7.70 mi from the Downtown centre (> 0.6 mi)
+                  domain_size: 7
+[    38.9 ms] CSP      ◆ unary constraint 'budget' on R: kept 6, pruned 1
+                  pruned:
+                    - Meze on Light Street - est. $96 for 2 exceeds $65
+                  domain_size: 6
+[    39.7 ms] CSP      ◆ unary constraint 'capacity' on T: kept 53, pruned 0
+                  domain_size: 53
+[    40.1 ms] CSP      ◆ unary constraint 'window' on T: kept 30, pruned 23
+                  pruned:
+                    - Bosphorus Table/B1 - not a window table
+                    - Bosphorus Table/B2 - not a window table
+                    - Anatolia Garden Kitchen/M1 - not a window table
+                    - Sultan's Grill Downtown/C2 - not a window table
+                    - Meze on Light Street/M1 - not a window table
+                    - Istanbul Ocakbasi/M1 - not a window table
+                    - Kebab Harbor/M1 - not a window table
+                    - Ephesus Bistro/M1 - not a window table
+                    - Cappadocia Lounge/M1 - not a window table
+                    - Turkish Kitchen Towson/M1 - not a window table
+                    - Olive & Thyme/M1 - not a window table
+                    - Zorba's Harbor/M1 - not a window table
+                  domain_size: 30
+[    42.9 ms] CSP      ◆ unary constraint 'view' on T: kept 26, pruned 4
+                  pruned:
+                    - Kebab Harbor/H1 - view is 'harbor', wanted garden or street
+                    - Kebab Harbor/H2 - view is 'harbor', wanted garden or street
+                    - Cappadocia Lounge/W1 - view is 'water', wanted garden or street
+                    - Zorba's Harbor/H1 - view is 'harbor', wanted garden or street
+                  domain_size: 26
+[    44.3 ms] CSP      • AC-3 ('belongs' R-T) dropped 1 restaurant(s) with no remaining table
+                  values:
+                    - Kebab Harbor
+[    45.0 ms] CSP      • AC-3 ('belongs' T-R) dropped 16 table(s) whose restaurant was already pruned
+                  values:
+                    - Meze on Light Street/T1
+                    - Meze on Light Street/T2
+                    - Istanbul Ocakbasi/W1
+                    - Istanbul Ocakbasi/W2
+                    - Turkish Kitchen Towson/W1
+                    - Beirut Nights/W1
+                    - Charm City Chophouse/B1
+                    - Charm City Chophouse/B2
+                    - Little Italy Trattoria/P1
+                    - Canton Taco Bar/P1
+                    - Mount Vernon Thai/W1
+                    - Downtown Diner/C1
+                    … 4 more
+[    47.7 ms] CSP      ◆ AC-3 pruned R=Sultan's Grill Downtown: no S satisfies 'open'
+                  reason: open 11:00-20:00 on Thu: a 90-min dinner starting 7:30 PM does not fit
+[    48.2 ms] CSP      ◆ AC-3 pruned T=Bosphorus Table/W2: no S satisfies 'available'
+                  reason: already booked at 7:30 PM
+[    48.7 ms] CSP      ◆ AC-3 pruned T=Anatolia Garden Kitchen/G2: no S satisfies 'available'
+                  reason: already booked at 7:30 PM
+[    49.3 ms] CSP      ◆ AC-3 pruned T=Ephesus Bistro/W1: no S satisfies 'available'
+                  reason: already booked at 7:30 PM
+[    49.7 ms] CSP      ◆ AC-3 pruned T=Ephesus Bistro/W2: no S satisfies 'available'
+                  reason: already booked at 7:30 PM
+[    50.1 ms] CSP      ◆ AC-3 pruned T=Olive & Thyme/W2: no S satisfies 'available'
+                  reason: already booked at 7:30 PM
+[    50.6 ms] CSP      • AC-3 ('belongs' T-R) dropped 1 table(s) whose restaurant was already pruned
+                  values:
+                    - Sultan's Grill Downtown/C1
+[    51.3 ms] CSP      • AC-3 ('belongs' R-T) dropped 1 restaurant(s) with no remaining table
+                  values:
+                    - Ephesus Bistro
+[    51.9 ms] CSP      • AC-3 arc consistency complete
+                  revisions: 25
+                  domains: R=3, T=4, S=1
+[    52.5 ms] PLAN     ▶ execute SearchSolutions
+                  pre:
+                    - constraints_propagated
+                  effects:
+                    - solutions_enumerated
+                    - solutions_found
+[    54.2 ms] CSP      • backtracking search found 4 consistent assignment(s)
+                  nodes_visited: 9
+                  backtracks: 0
+[    54.8 ms] SEARCH   ◆ 4 consistent assignment(s) across 3 restaurant(s)
+                  restaurants:
+                    - Anatolia Garden Kitchen
+                    - Bosphorus Table
+                    - Olive & Thyme
+[    55.7 ms] PLAN     ▶ execute RankSolutions
+                  pre:
+                    - solutions_found
+                  effects:
+                    - results_ranked
+[    56.6 ms] RANK     • best-first (A*) search over consistent assignments, ordered by utility
+[    57.0 ms] SEARCH   • expanded Bosphorus Table: 1 table/slot leaves pushed (optimistic U was 0.793)
+[    57.3 ms] SEARCH   ◆ goal popped #1: Bosphorus Table / table W1 @ 19:30 with U = 0.793 (f = 0.207)
+[    57.6 ms] SEARCH   • expanded Anatolia Garden Kitchen: 2 table/slot leaves pushed (optimistic U was 0.747)
+[    57.9 ms] SEARCH   ◆ goal popped #2: Anatolia Garden Kitchen / table G1 @ 19:30 with U = 0.747 (f = 0.253)
+[    58.2 ms] SEARCH   • goal popped: Anatolia Garden Kitchen / table S1 @ 19:30 U = 0.747 - kept as an 
+alternative seating
+[    58.5 ms] SEARCH   • expanded Olive & Thyme: 1 table/slot leaves pushed (optimistic U was 0.704)
+[    58.8 ms] SEARCH   ◆ goal popped #3: Olive & Thyme / table W1 @ 19:30 with U = 0.704 (f = 0.296)
+[    59.1 ms] SEARCH   • best-first search finished
+                  nodes_generated: 7
+                  nodes_expanded: 3
+                  goals_popped: 4
+                  leaves_total: 4
+                  frontier_left: 0
+[    60.1 ms] RANK     ◆ #1 Bosphorus Table U=0.793
+                  cuisine: 1.0
+                  rating: 0.8
+                  price: 0.338
+                  distance: 0.814
+                  popularity: 0.872
+                  seating: 1.0
+                  time: 1.0
+[    61.5 ms] RANK     ◆ #2 Anatolia Garden Kitchen U=0.747
+                  cuisine: 1.0
+                  rating: 0.85
+                  price: 0.092
+                  distance: 0.705
+                  popularity: 0.911
+                  seating: 1.0
+                  time: 1.0
+[    62.8 ms] RANK     ◆ #3 Olive & Thyme U=0.704
+                  cuisine: 0.6
+                  rating: 0.7
+                  price: 0.462
+                  distance: 0.74
+                  popularity: 0.859
+                  seating: 1.0
+                  time: 1.0
+[    64.2 ms] PLAN     ▶ execute ExplainResults
+                  pre:
+                    - results_ranked
+                  effects:
+                    - explanations_ready
+[    65.2 ms] EXPLAIN  • #1 Bosphorus Table: location=ok, cuisine=ok, price=ok, time=ok, view=ok
+[    65.6 ms] EXPLAIN  • #2 Anatolia Garden Kitchen: location=ok, cuisine=ok, price=ok, time=ok, view=ok
+[    65.9 ms] EXPLAIN  • #3 Olive & Thyme: location=ok, cuisine=ok, price=ok, time=ok, view=ok
+[    66.2 ms] PLAN     ▶ execute PresentResults
+                  pre:
+                    - explanations_ready
+                  effects:
+                    - results_presented
+[    67.1 ms] ACT      ▶ presenting 3 ranked recommendation(s)
+
+─────────────────────────────────────── Craveable - goal specification ───────────────────────────────────────
+                                        
+ cuisine        Turkish                 
+ location       Downtown, Baltimore, MD 
+ party_size     2                       
+ budget_total   $65                     
+ day            Thu                     
+ time           7:30 PM                 
+ meal           dinner                  
+ window_seat    yes                     
+ views          garden or street        
+                                        
+─────────────────────────────────────────────── Plan executed ────────────────────────────────────────────────
+ParseQuery -> RetrieveCandidates -> PropagateConstraints -> SearchSolutions -> RankSolutions -> ExplainResults
+-> PresentResults
+─────────────────────────────────────────────── Ranked results ───────────────────────────────────────────────
+╭───┬──────────────┬──────────┬───────────────┬─────────┬──────────────┬───────────┬─────────┬───────────────╮
+│   │              │          │               │         │     Est. for │           │         │  loc  cui  $  │
+│ # │ Restaurant   │ Area     │ Table / view  │ Arrive  │        party │    Rating │ Utility │   time view   │
+├───┼──────────────┼──────────┼───────────────┼─────────┼──────────────┼───────────┼─────────┼───────────────┤
+│ 1 │ Bosphorus    │ Downtown │ W1 · window · │ 7:30 PM │          $54 │ 4.6 (412) │   0.793 │ ✓   ✓   ✓   ✓ │
+│   │ Table        │          │ street view   │         │              │           │         │       ✓       │
+│ 2 │ Anatolia     │ Downtown │ G1 · window · │ 7:30 PM │          $62 │ 4.7 (538) │   0.747 │ ✓   ✓   ✓   ✓ │
+│   │ Garden       │          │ garden view   │         │              │           │         │       ✓       │
+│   │ Kitchen      │          │               │         │              │           │         │               │
+│ 3 │ Olive &      │ Downtown │ W1 · window · │ 7:30 PM │          $50 │ 4.4 (377) │   0.704 │ ✓   ✓   ✓   ✓ │
+│   │ Thyme        │          │ street view   │         │              │           │         │       ✓       │
+╰───┴──────────────┴──────────┴───────────────┴─────────┴──────────────┴───────────┴─────────┴───────────────╯
+✓ criterion met exactly   ~ met only after relaxation   - not requested
+────────────────────────────────────────────── Why these match ───────────────────────────────────────────────
+╭─ #1  Bosphorus Table  -  table W1 at 7:30 PM ──────────────────────────────────────────────────────────────╮
+│ location Bosphorus Table is at 210 N Charles St in Downtown, 0.19 mi from the Downtown centre - inside the │
+│ requested area (neighbourhood 'Downtown' is part of Downtown).                                             │
+│ cuisine  Primary cuisine is Turkish - an exact match for 'Turkish'.                                        │
+│ price    Estimated dinner for 2: 2 x $27 = $54 ($$), within the $65 budget by $11 (before tax and tip).    │
+│ time     Bosphorus Table is open 11:30-22:00 on Thu; table W1 is free at the requested 7:30 PM and a       │
+│ 90-minute dinner fits before closing.                                                                      │
+│ view     Table W1 (front window) seats 2, is a window table with a street view - matches the request for a │
+│ window seat with a view of the garden or street.                                                           │
+│ rating   Rated 4.6/5 from 412 reviews.                                                                     │
+│ utility  cuisine 0.200 + rating 0.200 + price 0.068 + distance 0.081 + seating 0.100 + time 0.100 +        │
+│ popularity 0.044 = 0.793                                                                                   │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ #2  Anatolia Garden Kitchen  -  table G1 at 7:30 PM ──────────────────────────────────────────────────────╮
+│ location Anatolia Garden Kitchen is at 15 W Fayette St in Downtown, 0.30 mi from the Downtown centre -     │
+│ inside the requested area (neighbourhood 'Downtown' is part of Downtown).                                  │
+│ cuisine  Primary cuisine is Turkish - an exact match for 'Turkish'.                                        │
+│ price    Estimated dinner for 2: 2 x $31 = $62 ($$), within the $65 budget by $3 (before tax and tip).     │
+│ time     Anatolia Garden Kitchen is open 17:00-22:30 on Thu; table G1 is free at the requested 7:30 PM and │
+│ a 90-minute dinner fits before closing.                                                                    │
+│ view     Table G1 (courtyard window) seats 2, is a window table with a garden view - matches the request   │
+│ for a window seat with a view of the garden or street.                                                     │
+│ rating   Rated 4.7/5 from 538 reviews.                                                                     │
+│ also     other consistent seatings here: table S1 (street view) at 7:30 PM                                 │
+│ utility  cuisine 0.200 + rating 0.213 + price 0.018 + distance 0.070 + seating 0.100 + time 0.100 +        │
+│ popularity 0.046 = 0.747                                                                                   │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ #3  Olive & Thyme  -  table W1 at 7:30 PM ────────────────────────────────────────────────────────────────╮
+│ location Olive & Thyme is at 120 W Baltimore St in Downtown, 0.26 mi from the Downtown centre - inside the │
+│ requested area (neighbourhood 'Downtown' is part of Downtown).                                             │
+│ cuisine  Primary cuisine is Mediterranean; Turkish is listed as a secondary cuisine (pan-mediterranean     │
+│ menu with a turkish grill section), so it scores 0.6 instead of 1.0.                                       │
+│ price    Estimated dinner for 2: 2 x $25 = $50 ($$), within the $65 budget by $15 (before tax and tip).    │
+│ time     Olive & Thyme is open 11:00-22:00 on Thu; table W1 is free at the requested 7:30 PM and a         │
+│ 90-minute dinner fits before closing.                                                                      │
+│ view     Table W1 (front window) seats 2, is a window table with a street view - matches the request for a │
+│ window seat with a view of the garden or street.                                                           │
+│ rating   Rated 4.4/5 from 377 reviews.                                                                     │
+│ utility  cuisine 0.120 + rating 0.175 + price 0.092 + distance 0.074 + seating 0.100 + time 0.100 +        │
+│ popularity 0.043 = 0.704                                                                                   │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+──────────────────────────────────── Near misses (same cuisine, rejected) ────────────────────────────────────
+                                                                                                    
+  Restaurant                Why it was pruned                                                       
+ ────────────────────────────────────────────────────────────────────────────────────────────────── 
+  Istanbul Ocakbasi         Mount Vernon is 0.69 mi from the Downtown centre (> 0.6 mi)             
+  Cappadocia Lounge         Fells Point is 1.15 mi from the Downtown centre (> 0.6 mi)              
+  Turkish Kitchen Towson    Towson is 7.70 mi from the Downtown centre (> 0.6 mi)                   
+  Meze on Light Street      est. $96 for 2 exceeds $65                                              
+  Sultan's Grill Downtown   open 11:00-20:00 on Thu: a 90-min dinner starting 7:30 PM does not fit  
+  Kebab Harbor              table M1: not a window table                                            
+                            table H1: view is 'harbor', wanted garden or street                     
+                            table H2: view is 'harbor', wanted garden or street                     
+  Ephesus Bistro            table M1: not a window table                                            
+                            table W1: already booked at 7:30 PM                                     
+                            table W2: already booked at 7:30 PM                                     
+                                                                                                    
+──────────────────────────────────────────── Reasoning statistics ────────────────────────────────────────────
+CSP domains |R|,|T|,|S|: {'R': 26, 'T': 53, 'S': 1} -> node consistency {'R': 6, 'T': 26, 'S': 1} -> AC-3 
+{'R': 3, 'T': 4, 'S': 1}; backtracking visited 9 nodes, 0 dead ends, 4 solutions
+A* ranking: 7 nodes generated, 3 expanded, 4 goals popped out of 4 leaves
+Events logged: 61 PLAN=9 NLP=11 RETRIEVE=2 CSP=19 SEARCH=12 RANK=4 EXPLAIN=3 ACT=1

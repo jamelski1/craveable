@@ -1,0 +1,27 @@
+id,name,cuisine,secondary_cuisines,neighborhood,address,lat,lon,price_tier,avg_dinner_pp,rating,review_count,accepts_reservations,hours,notes
+R01,Bosphorus Table,Turkish,Mediterranean,Downtown,210 N Charles St,39.2920,-76.6150,$$,27,4.6,412,yes,Mon-Thu 11:30-22:00; Fri-Sat 11:30-23:00; Sun 12:00-21:00,Charcoal grill; meze platters; street-facing bay windows
+R02,Anatolia Garden Kitchen,Turkish,,Downtown,15 W Fayette St,39.2935,-76.6160,$$,31,4.7,538,yes,Tue-Thu 17:00-22:30; Fri-Sat 17:00-23:00; Sun 16:00-21:00,Courtyard garden; window tables overlook the garden
+R03,Sultan's Grill Downtown,Turkish,,Downtown,100 E Baltimore St,39.2895,-76.6105,$,18,4.1,290,no,Mon-Sat 11:00-20:00,Fast-casual kebab counter; closes early
+R04,Meze on Light Street,Turkish,Mediterranean,Inner Harbor,400 Light St,39.2860,-76.6130,$$$,48,4.5,623,yes,Mon-Sun 17:00-23:00,Upscale tasting menus; garden terrace
+R05,Istanbul Ocakbasi,Turkish,,Mount Vernon,900 N Charles St,39.3000,-76.6160,$$,29,4.8,801,yes,Tue-Sun 12:00-22:00,Wood-fired ocakbasi; street-view windows on Charles St
+R06,Kebab Harbor,Turkish,,Downtown,300 E Pratt St,39.2880,-76.6080,$$,24,4.3,356,yes,Mon-Sun 11:00-22:00,Window tables face the harbor promenade
+R07,Ephesus Bistro,Turkish,,Downtown,20 S Eutaw St,39.2915,-76.6195,$$,30,4.4,220,yes,Mon-Sun 12:00-22:00,Small bistro; popular window tables book out
+R08,Cappadocia Lounge,Turkish,,Fells Point,1700 Thames St,39.2830,-76.5930,$$,35,4.5,467,yes,Wed-Sun 17:00-23:00,Waterfront lounge
+R09,Turkish Kitchen Towson,Turkish,,Towson,10 W Pennsylvania Ave,39.4015,-76.6019,$$,26,4.4,318,yes,Mon-Sun 11:00-22:00,Suburban family restaurant
+R10,Olive & Thyme,Mediterranean,Turkish;Greek,Downtown,120 W Baltimore St,39.2898,-76.6170,$$,25,4.4,377,yes,Mon-Sun 11:00-22:00,Pan-Mediterranean menu with a Turkish grill section
+R11,Zorba's Harbor,Greek,Mediterranean,Inner Harbor,301 Light St,39.2865,-76.6120,$$,28,4.2,510,yes,Mon-Sun 11:00-22:00,Harbor-side taverna
+R12,Beirut Nights,Lebanese,Mediterranean,Mount Vernon,820 N Charles St,39.2990,-76.6160,$$,26,4.5,402,yes,Tue-Sun 12:00-22:00,Live music Fridays
+R13,Charm City Chophouse,Steakhouse,American,Downtown,1 E Redwood St,39.2893,-76.6140,$$$$,85,4.6,920,yes,Mon-Sun 17:00-23:00,Prime steaks; street-view booths
+R14,Lexington Market Crab House,Seafood,American,Downtown,400 W Lexington St,39.2915,-76.6220,$$,34,4.3,1540,no,Mon-Sat 11:00-21:00,Maryland crab cakes
+R15,Little Italy Trattoria,Italian,,Little Italy,230 S High St,39.2880,-76.5990,$$,32,4.5,688,yes,Mon-Sun 12:00-22:00,Garden patio in summer
+R16,Hampden Burger Co.,American,,Hampden,3600 Falls Rd,39.3310,-76.6350,$,15,4.2,455,no,Mon-Sun 11:00-22:00,Counter service
+R17,Canton Taco Bar,Mexican,,Canton,2900 O'Donnell St,39.2800,-76.5760,$,16,4.3,390,no,Mon-Sun 11:00-23:00,Street-view patio
+R18,Federal Hill Ramen,Japanese,Ramen,Federal Hill,1100 Light St,39.2770,-76.6120,$$,22,4.4,612,no,Tue-Sun 12:00-22:00,No reservations
+R19,Harbor East Sushi,Japanese,Sushi,Harbor East,700 Aliceanna St,39.2835,-76.6000,$$$,55,4.7,733,yes,Mon-Sun 17:00-23:00,Omakase counter
+R20,Mount Vernon Thai,Thai,,Mount Vernon,1000 N Charles St,39.3010,-76.6160,$$,21,4.3,298,yes,Mon-Sun 11:30-22:00,Family run
+R21,Downtown Diner,American,Diner,Downtown,200 E Baltimore St,39.2898,-76.6090,$,14,3.9,1203,no,Mon-Sun 06:00-22:00,Open early; window counter on Baltimore St
+R22,Pratt Street Pizza,Italian,Pizza,Downtown,100 W Pratt St,39.2865,-76.6150,$,17,4.0,845,no,Mon-Sun 11:00-23:00,Slices and pies
+R23,Camden Yards BBQ,Barbecue,American,Downtown,333 W Camden St,39.2840,-76.6190,$$,23,4.1,677,no,Mon-Sun 11:00-22:00,Game-day crowds
+R24,Light Street Vegan,Vegan,American,Downtown,200 Light St,39.2875,-76.6125,$$,24,4.5,310,yes,Tue-Sun 11:00-21:30,Plant-based menu; garden-view window
+R25,Charles Street Bistro,French,,Downtown,300 N Charles St,39.2930,-76.6150,$$$,52,4.6,580,yes,Tue-Sat 17:00-22:30,Classic bistro; street-view windows
+R26,Aegean Fish House,Greek,Seafood;Mediterranean,Downtown,10 S Calvert St,39.2890,-76.6118,$$$,44,4.4,402,yes,Mon-Sun 16:00-22:00,Whole grilled fish

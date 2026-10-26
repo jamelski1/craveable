@@ -1,0 +1,10 @@
+pandas>=2.0
+rich>=13.0
+# optional
+matplotlib>=3.7        # --chart
+pytest>=7.0            # tests
+pyinstaller>=6.0       # scripts/build.*
+imageio-ffmpeg>=0.5    # tools/render_*_video.py
+Pillow>=10.0           # tools/render_*_video.py
+edge-tts>=7.0          # tools/render_explainer_video.py narration (free Microsoft neural voices)
+# anthropic>=0.40      # --nlp llm

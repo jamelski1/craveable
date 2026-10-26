@@ -1,0 +1,54 @@
+restaurant_id,table_id,seats,window,view,zone,booked
+R01,W1,2,yes,street,front window,Thu 18:00;Fri 19:30
+R01,W2,4,yes,garden,side window,Thu 19:00;Thu 19:30;Thu 20:00
+R01,B1,2,no,none,main room,
+R01,B2,4,no,none,main room,Thu 19:30
+R02,G1,2,yes,garden,courtyard window,Thu 18:30;Fri 19:30;Sat 19:30
+R02,G2,2,yes,garden,courtyard window,Thu 19:00;Thu 19:30
+R02,S1,2,yes,street,front window,Thu 20:00
+R02,M1,6,no,none,main room,
+R03,C1,2,yes,street,counter,
+R03,C2,2,no,none,main room,
+R04,T1,2,yes,garden,terrace window,Thu 20:00
+R04,T2,4,yes,garden,terrace window,
+R04,M1,2,no,none,dining room,
+R05,W1,2,yes,street,front window,Fri 19:30
+R05,W2,2,yes,street,front window,Thu 19:30
+R05,M1,4,no,none,grill room,
+R06,H1,2,yes,harbor,promenade window,
+R06,H2,4,yes,harbor,promenade window,Thu 19:30
+R06,M1,2,no,none,main room,
+R07,W1,2,yes,street,front window,Thu 19:30;Thu 18:30
+R07,W2,4,yes,garden,rear window,Thu 19:00;Thu 19:30;Thu 20:00
+R07,M1,2,no,none,main room,
+R08,W1,2,yes,water,waterfront,Thu 19:30
+R08,M1,4,no,none,lounge,
+R09,W1,4,yes,street,front window,
+R09,M1,2,no,none,main room,
+R10,W1,2,yes,street,front window,Thu 18:00
+R10,W2,2,yes,street,front window,Thu 19:30
+R10,M1,4,no,none,main room,
+R11,H1,2,yes,harbor,window,
+R11,M1,4,no,none,main room,
+R12,W1,2,yes,street,front window,
+R12,M1,4,no,none,main room,
+R13,B1,2,yes,street,window booth,
+R13,B2,4,yes,street,window booth,Thu 19:30
+R13,M1,2,no,none,main room,
+R14,M1,4,no,none,market hall,
+R15,P1,2,yes,garden,patio window,
+R15,M1,4,no,none,main room,
+R16,M1,2,no,none,counter,
+R17,P1,2,yes,street,patio,
+R18,M1,2,no,none,main room,
+R19,C1,2,no,none,omakase counter,
+R20,W1,2,yes,street,front window,
+R21,C1,2,yes,street,counter,
+R22,M1,4,no,none,main room,
+R23,M1,4,no,none,main room,
+R24,W1,2,yes,garden,garden window,Thu 19:30
+R24,M1,2,no,none,main room,
+R25,W1,2,yes,street,front window,
+R25,W2,2,yes,street,front window,Thu 19:30
+R26,W1,2,yes,street,window,
+R26,M1,4,no,none,main room,

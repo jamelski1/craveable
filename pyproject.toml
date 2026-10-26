@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "craveable"
+version = "1.0.0"
+description = "Craveable: a goal- and utility-based AI agent that finds restaurants under natural-language constraints."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Jamel Lawson" }]
+dependencies = [
+    "pandas>=2.0",
+    "rich>=13.0",
+]
+
+[project.optional-dependencies]
+viz = ["matplotlib>=3.7"]
+llm = ["anthropic>=0.40", "pydantic>=2.0"]
+dev = ["pytest>=7.0", "pyinstaller>=6.0", "matplotlib>=3.7"]
+
+[project.scripts]
+craveable = "craveable.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["craveable*"]
+
+[tool.setuptools.package-data]
+craveable = ["data/*.csv"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
